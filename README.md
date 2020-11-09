@@ -1,6 +1,7 @@
 # TodoFrontEndAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+Possible project structure: https://itnext.io/choosing-a-highly-scalable-folder-structure-in-angular-d987de65ec7
 
 ## Development server
 
