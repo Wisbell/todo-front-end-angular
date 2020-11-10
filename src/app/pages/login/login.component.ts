@@ -25,10 +25,8 @@ export class LoginComponent implements OnInit {
       const val = this.loginForm.value;
 
       if (val.username && val.password) {
-        console.log('username', val.username);
-        console.log('password', val.password);
         await this.authService.login(val.username, val.password);
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/todo/list');
 
       }
     } catch (error) {
@@ -39,10 +37,9 @@ export class LoginComponent implements OnInit {
     }
   } 
 
-  // TODO: Logout and redirect to about page
   logout() {
     this.authService.logout();
-    // this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/');
   }
 
 }

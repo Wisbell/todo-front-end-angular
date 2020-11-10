@@ -17,7 +17,6 @@ export class AuthService {
     localStorage.setItem('access_token', response.access_token);
   }
 
-  // TODO: Logout and redirect to about page
   logout() {
     localStorage.removeItem('access_token');
   }

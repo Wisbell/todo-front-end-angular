@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './pages/about/about.component';
 import { TodoComponent } from './pages/todo/todo.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TodoComponent } from './pages/todo/todo.component';
     NavbarComponent,
     LoginComponent,
     AboutComponent,
-    TodoComponent
+    TodoComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
