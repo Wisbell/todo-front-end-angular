@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +10,39 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl(),
-    password: new FormControl()
+    username: new FormControl(''),
+    password: new FormControl('')
   }); 
 
-  login(): void {
-    console.log('Name:' + this.loginForm.get('username').value);
+  async login(): Promise<void> {
+    try {
+      const val = this.loginForm.value;
+
+      if (val.username && val.password) {
+        console.log('username', val.username);
+        console.log('password', val.password);
+        await this.authService.login(val.username, val.password);
+        this.router.navigateByUrl('/');
+
+      }
+    } catch (error) {
+      // TODO: Show user error happened while logging in
+      console.log('Error logging in...');
+      console.error(error);
+      return error;
+    }
   } 
+
+  // TODO: Logout and redirect to about page
+  logout() {
+    this.authService.logout();
+    // this.router.navigateByUrl('/');
+  }
 
 }
