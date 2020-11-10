@@ -8,12 +8,16 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AboutComponent } from './pages/about/about.component';
+import { TodoComponent } from './pages/todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    AboutComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
