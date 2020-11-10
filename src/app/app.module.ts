@@ -11,6 +11,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './pages/about/about.component';
 import { TodoComponent } from './pages/todo/todo.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
 
 @NgModule({
   declarations: [
@@ -27,7 +32,15 @@ import { SettingsComponent } from './pages/settings/settings.component';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        // TODO: Add allowed domains to for security
+        // allowedDomains: ["example.com"],
+        // disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
