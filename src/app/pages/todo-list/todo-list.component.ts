@@ -21,9 +21,28 @@ export class TodoListComponent implements OnInit {
   constructor(private todoService: TodoService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    const userTokenData: UserTokenModel = this.authService.getUserTokenData();
-    this.todos = this.todoService.getAllTodosByUserId(userTokenData.sub);
+    this.todos = this.getAllUserTodos();
     console.log('todos', this.todos);
+  }
+
+  getUserId(): string {
+    const userTokenData: UserTokenModel = this.authService.getUserTokenData();
+    return userTokenData.sub;
+  }
+
+  getAllUserTodos() {
+    return this.todoService.getAllTodosByUserId(this.getUserId());
+  }
+
+  toggleComplete(todoId: string) {
+    // TODO: Toggle table row success class
+    // TODO: Http Patch/Put to backend updating complete status
+
+  }
+
+  deleteTodo(id: string) {
+    this.todoService.deleteTodo(id);
+    this.todos = this.getAllUserTodos();
   }
 
 }

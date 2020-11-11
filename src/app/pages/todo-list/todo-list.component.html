@@ -37,7 +37,7 @@
         <td>
           <!-- TODO: Hide update/delete if update clicked -->
           <button type="button" class="btn btn-warning">Update</button>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <button type="button" class="btn btn-danger" (click)="deleteTodo(todo.id)">Delete</button>
           <!-- TODO: Hide save/cancel if not updating -->
           <button type="button" class="btn btn-success">Save</button>
           <button type="button" class="btn btn-danger">Cancel</button>

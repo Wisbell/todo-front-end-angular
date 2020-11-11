@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TodoModel } from '../models/todo.model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { TodoModel } from '../models/todo.model';
 export class TodoService {
   private readonly todos: TodoModel[];
 
-  constructor() { 
+  constructor(private authService: AuthService) { 
     this.todos = [
       {
         id: "1",
@@ -27,7 +28,6 @@ export class TodoService {
         text: "Todo Three",
         completed: false
       },
-    
     ];
   }
 
@@ -44,15 +44,36 @@ export class TodoService {
     return this.todos.find(todo => todo.id === id);
   }
 
-  createTodo() {
+  createTodo(todoText: string) {
+    const newTodo = new TodoModel;
+    newTodo.id = this.generateMaxId();
+    newTodo.userId = this.authService.getUserTokenData().sub;
+    newTodo.text = todoText;
+    newTodo.completed = false;
 
+    this.todos.push(newTodo);
+    return newTodo;
   }
 
   updateTodo() {
 
   }
 
-  deleteTodo() {
+  deleteTodo(id: string) {
+    const deleteIndex: number = this.todos.findIndex(todo => todo.id === id);
+    this.todos.splice(deleteIndex, 1);
+  }
 
+  /**
+   * Utility Functions
+   */
+
+  getMaxId(): number {
+    return Math.max(...this.todos.map(todo => parseInt(todo.id)));
+  }
+
+  generateMaxId(): string {
+    const maxId: number = this.getMaxId();
+    return (maxId + 1).toString();
   }
 }
