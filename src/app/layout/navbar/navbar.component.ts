@@ -1,5 +1,4 @@
-// TODO: Change anchors to router-links
-// TODO: Move login/logout to right side of navbar
+// TODO: Add active link depending on route
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -17,8 +16,12 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // TODO: Make logout link call this function
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
   logout() {
+    console.log('logout');
     this.authService.logout();
     this.router.navigateByUrl('/');
   }

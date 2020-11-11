@@ -10,19 +10,11 @@
       <li class="nav-item active">
         <a class="nav-link" routerLink="/">About</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" routerLink="/settings">Settings</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
-      </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <a *ngIf="!isLoggedIn()" class="btn btn-success my-2 my-sm-0" type="button" routerLink="/login">Login</a>
+    <button *ngIf="isLoggedIn()" class="btn btn-info my-2 my-sm-0" type="button" (click)="logout()">Logout</button>
   </div>
 </nav>
