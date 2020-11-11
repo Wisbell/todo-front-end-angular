@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: '', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'settings', component: SettingsComponent },
-  { path: 'todo/list', component: TodoListComponent, canActivate: [AuthGuard] },
+  // { path: 'todo/list', component: TodoListComponent, canActivate: [AuthGuard] },
+  { path: 'todo/list', component: TodoListComponent },
 ];
 
 @NgModule({
