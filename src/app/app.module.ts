@@ -12,6 +12,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TodoListComponent } from './pages/todo-list/todo-list.component';
+import { TodoCreateModalComponent } from './todo-create-modal/todo-create-modal.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -24,7 +26,8 @@ export function tokenGetter() {
     LoginComponent,
     AboutComponent,
     SettingsComponent,
-    TodoListComponent
+    TodoListComponent,
+    TodoCreateModalComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    ModalModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -40,7 +44,7 @@ export function tokenGetter() {
         // allowedDomains: ["example.com"],
         // disallowedRoutes: ["http://example.com/examplebadroute/"],
       },
-    }),
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

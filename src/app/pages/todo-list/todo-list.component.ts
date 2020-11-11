@@ -9,6 +9,8 @@ import { TodoModel } from 'src/app/models/todo.model';
 import { UserTokenModel } from 'src/app/models/user-token.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { TodoService } from 'src/app/services/todo.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { TodoCreateModalComponent } from 'src/app/todo-create-modal/todo-create-modal.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -17,8 +19,9 @@ import { TodoService } from 'src/app/services/todo.service';
 })
 export class TodoListComponent implements OnInit {
   public todos: TodoModel[];
+  bsModalRef: BsModalRef;
 
-  constructor(private todoService: TodoService, private authService: AuthService) { }
+  constructor(private todoService: TodoService, private authService: AuthService, private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.todos = this.getAllUserTodos();
@@ -40,9 +43,22 @@ export class TodoListComponent implements OnInit {
 
   }
 
+  editTodo(id: string) {
+
+  }
+
   deleteTodo(id: string) {
     this.todoService.deleteTodo(id);
     this.todos = this.getAllUserTodos();
+  }
+
+  openCreateTodoModal() {
+    this.bsModalRef = this.modalService.show(TodoCreateModalComponent);
+
+    const onHideSub = this.bsModalRef.onHide.subscribe(() => {
+      this.todos = this.getAllUserTodos();
+      onHideSub.unsubscribe();
+    });
   }
 
 }

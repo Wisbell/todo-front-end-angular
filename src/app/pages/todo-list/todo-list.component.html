@@ -1,5 +1,10 @@
 <div class="container-fluid">
-  <h1 class="mt-4 mb-4 text-center">Todo List</h1>
+  <h1 class="mt-4 mb-3 text-center">Todo List</h1>
+  <div class="row mb-3">
+    <div class="col text-center">
+      <button type="button" class="btn btn-primary btn-lg" (click)="openCreateTodoModal()">Add Todo</button>
+    </div>
+  </div>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -17,7 +22,7 @@
           <input type="checkbox">
         </th>
         <td>0</td>
-        <td> Dummy Todo Text</td>
+        <td>Dummy Todo Text</td>
         <td>
           Buttons go here!
         </td>
@@ -33,6 +38,8 @@
           </ng-template>
         </th>
         <td>{{ todo.id }}</td>
+        <!-- <td>{{ todo.text }} <input type="text" [value]="todo.text"></td> -->
+        <!-- <td>{{ todo.text }} <input type="text" [(ngModel)]="todo.text"></td> -->
         <td>{{ todo.text }}</td>
         <td>
           <!-- TODO: Hide update/delete if update clicked -->

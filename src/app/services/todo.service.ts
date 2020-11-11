@@ -47,11 +47,14 @@ export class TodoService {
   createTodo(todoText: string) {
     const newTodo = new TodoModel;
     newTodo.id = this.generateMaxId();
-    newTodo.userId = this.authService.getUserTokenData().sub;
+    newTodo.userId = this.authService.getUserTokenData().sub.toString();
     newTodo.text = todoText;
     newTodo.completed = false;
 
+    console.log('newTodo', newTodo);
+
     this.todos.push(newTodo);
+    console.log('all todos updated?', this.todos);
     return newTodo;
   }
 
