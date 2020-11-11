@@ -22,34 +22,26 @@
           <input type="checkbox">
         </th>
         <td>0</td>
-        <td>Dummy Todo Text</td>
+        <td>Example Todo Text</td>
         <td>
-          Buttons go here!
+          Update Functionality Buttons Go Here!
         </td>
       </tr>
       <tr *ngFor="let todo of todos" [id]="'todo-id-' + todo.id" [class.table-success]="todo.completed">
         <th scope="row">
           <ng-template [ngIf]="todo.completed" [ngIfElse]="incomplete">
-            <!-- <input [id]="'todo-id-' + todo.id" type="checkbox" checked> -->
             <input (change)="toggleComplete(todo.id)" type="checkbox" checked>
           </ng-template>
           
           <ng-template #incomplete>
-            <!-- <input [id]="'todo-id-' + todo.id" type="checkbox"> -->
             <input (change)="toggleComplete(todo.id)" type="checkbox">
           </ng-template>
         </th>
         <td>{{ todo.id }}</td>
-        <!-- <td>{{ todo.text }} <input type="text" [value]="todo.text"></td> -->
-        <!-- <td>{{ todo.text }} <input type="text" [(ngModel)]="todo.text"></td> -->
         <td>{{ todo.text }}</td>
         <td>
-          <!-- TODO: Hide update/delete if update clicked -->
-          <button type="button" class="btn btn-warning mr-2">Edit</button>
+          <button type="button" class="btn btn-warning mr-2" (click)="openEditTodoModal(todo)">Edit</button>
           <button type="button" class="btn btn-danger" (click)="deleteTodo(todo.id)">Delete</button>
-          <!-- TODO: Hide save/cancel if not updating -->
-          <!-- <button type="button" class="btn btn-success">Save</button>
-          <button type="button" class="btn btn-danger">Cancel</button> -->
         </td>
       </tr>
     </tbody>

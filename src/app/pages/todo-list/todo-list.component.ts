@@ -1,8 +1,6 @@
-// TODO: Color todos in table green if completed
-// TODO: Remove completed if marked incomplete but was marked completed
-// TODO: Show only complete todos
-// TODO: Show only incomplete todos
-// TODO: Clear incomplete todos
+// TODO: Show only complete todos button
+// TODO: Show only incomplete todos button
+// TODO: Clear all completed todos button
 
 import { Component, OnInit } from '@angular/core';
 import { TodoModel } from 'src/app/models/todo.model';
@@ -10,7 +8,8 @@ import { UserTokenModel } from 'src/app/models/user-token.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { TodoService } from 'src/app/services/todo.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { TodoCreateModalComponent } from 'src/app/todo-create-modal/todo-create-modal.component';
+import { TodoCreateModalComponent } from 'src/app/pages/todo-create-modal/todo-create-modal.component';
+import { TodoEditModalComponent } from '../todo-edit-modal/todo-edit-modal.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -48,9 +47,9 @@ export class TodoListComponent implements OnInit {
       todoToToggle.completed = true;
   }
 
-  editTodo(id: string) {
+  // editTodo(id: string) {
 
-  }
+  // }
 
   deleteTodo(id: string) {
     this.todoService.deleteTodo(id);
@@ -59,6 +58,19 @@ export class TodoListComponent implements OnInit {
 
   openCreateTodoModal() {
     this.bsModalRef = this.modalService.show(TodoCreateModalComponent);
+
+    const onHideSub = this.bsModalRef.onHide.subscribe(() => {
+      this.todos = this.getAllUserTodos();
+      onHideSub.unsubscribe();
+    });
+  }
+
+  openEditTodoModal(todo: TodoModel) {
+    const initialState = {
+      todo
+    };
+
+    this.bsModalRef = this.modalService.show(TodoEditModalComponent, { initialState });
 
     const onHideSub = this.bsModalRef.onHide.subscribe(() => {
       this.todos = this.getAllUserTodos();

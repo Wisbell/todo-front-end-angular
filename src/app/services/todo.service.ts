@@ -55,8 +55,10 @@ export class TodoService {
     return newTodo;
   }
 
-  updateTodo() {
-
+  updateTodo(updatedTodo: TodoModel) {
+    let todoToUpdate = this.getTodo(updatedTodo.id);
+    todoToUpdate = updatedTodo;
+    return updatedTodo;
   }
 
   deleteTodo(id: string) {

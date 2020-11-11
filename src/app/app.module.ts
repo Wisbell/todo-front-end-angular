@@ -12,8 +12,9 @@ import { AboutComponent } from './pages/about/about.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TodoListComponent } from './pages/todo-list/todo-list.component';
-import { TodoCreateModalComponent } from './todo-create-modal/todo-create-modal.component';
+import { TodoCreateModalComponent } from './pages/todo-create-modal/todo-create-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { TodoEditModalComponent } from './pages/todo-edit-modal/todo-edit-modal.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -27,7 +28,8 @@ export function tokenGetter() {
     AboutComponent,
     SettingsComponent,
     TodoListComponent,
-    TodoCreateModalComponent
+    TodoCreateModalComponent,
+    TodoEditModalComponent
   ],
   imports: [
     BrowserModule,

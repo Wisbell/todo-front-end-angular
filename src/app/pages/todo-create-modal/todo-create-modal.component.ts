@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { TodoService } from '../services/todo.service';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-create-modal',
