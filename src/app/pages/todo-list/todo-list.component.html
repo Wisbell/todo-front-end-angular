@@ -15,12 +15,17 @@
     <tbody>
       <tr>
         <th scope="row">
-          <input type="checkbox" aria-label="Checkbox for following text input">
+          <input type="checkbox">
         </th>
         <td>1</td>
         <td>Todo text 1 2 3...</td>
         <td>
+          <!-- TODO: Hide update/delete if update clicked -->
           <button type="button" class="btn btn-warning">Update</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+          <!-- TODO: Hide save/cancel if not updating -->
+          <button type="button" class="btn btn-success">Save</button>
+          <button type="button" class="btn btn-danger">Cancel</button>
         </td>
       </tr>
     </tbody>
