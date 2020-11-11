@@ -51,10 +51,7 @@ export class TodoService {
     newTodo.text = todoText;
     newTodo.completed = false;
 
-    console.log('newTodo', newTodo);
-
     this.todos.push(newTodo);
-    console.log('all todos updated?', this.todos);
     return newTodo;
   }
 

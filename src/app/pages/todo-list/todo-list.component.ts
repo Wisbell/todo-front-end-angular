@@ -38,9 +38,14 @@ export class TodoListComponent implements OnInit {
   }
 
   toggleComplete(todoId: string) {
-    // TODO: Toggle table row success class
-    // TODO: Http Patch/Put to backend updating complete status
+    document.getElementById(`todo-id-${todoId}`).classList.toggle('table-success');
 
+    const todoToToggle = this.todoService.getTodo(todoId);
+
+    if (todoToToggle.completed)
+      todoToToggle.completed = false;
+    else
+      todoToToggle.completed = true;
   }
 
   editTodo(id: string) {
