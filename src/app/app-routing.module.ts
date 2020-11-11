@@ -5,14 +5,13 @@ import { AboutComponent } from './pages/about/about.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { TodoListComponent } from './pages/todo-list/todo-list.component';
-import { TodoComponent } from './pages/todo/todo.component';
 
 const routes: Routes = [
   { path: '', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'settings', component: SettingsComponent },
-  // { path: 'todo/list', component: TodoListComponent, canActivate: [AuthGuard] },
-  { path: 'todo/list', component: TodoListComponent },
+  { path: 'todo/list', component: TodoListComponent, canActivate: [AuthGuard] },
+  // { path: 'todo/list', component: TodoListComponent },
 ];
 
 @NgModule({

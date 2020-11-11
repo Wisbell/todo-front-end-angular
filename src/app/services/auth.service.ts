@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { AuthModel } from '../models/auth.model';
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { UserTokenModel } from '../models/user-token.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,11 +25,25 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    const token = localStorage.getItem('access_token');
+    const token = this.getAccessToken();
 
     if (token && !this.jwtHelper.isTokenExpired(token)) 
       return true;
 
     return false;
+  }
+
+  getAccessToken(): string {
+    return localStorage.getItem('access_token');
+  }
+
+  getUserTokenData(): UserTokenModel {
+    const token: string = this.getAccessToken();
+
+    if (this.isLoggedIn() && token) {
+      return this.jwtHelper.decodeToken(token);
+    } else {
+      this.logout();
+    }
   }
 }

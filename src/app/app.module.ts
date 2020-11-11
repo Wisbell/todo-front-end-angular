@@ -9,7 +9,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './pages/about/about.component';
-import { TodoComponent } from './pages/todo/todo.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TodoListComponent } from './pages/todo-list/todo-list.component';
@@ -24,7 +23,6 @@ export function tokenGetter() {
     NavbarComponent,
     LoginComponent,
     AboutComponent,
-    TodoComponent,
     SettingsComponent,
     TodoListComponent
   ],

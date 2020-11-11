@@ -1,11 +1,10 @@
-
 <div class="container-fluid">
   <h1 class="mt-4 mb-4 text-center">Todo List</h1>
   <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col" style="width: 120px;">
-          <input type="checkbox" class="mr-2"> Select All 
+        <th scope="col" style="width: 100px;">
+          Completed
         </th>
         <th scope="col" style="width: 60px;">Id</th>
         <th scope="col">Todo</th>
@@ -17,8 +16,24 @@
         <th scope="row">
           <input type="checkbox">
         </th>
-        <td>1</td>
-        <td>Todo text 1 2 3...</td>
+        <td>0</td>
+        <td> Dummy Todo Text</td>
+        <td>
+          Buttons go here!
+        </td>
+      </tr>
+      <tr *ngFor="let todo of todos" [class.table-success]="todo.completed">
+        <th scope="row">
+          <ng-template [ngIf]="todo.completed" [ngIfElse]="incomplete">
+            <input type="checkbox" checked>
+          </ng-template>
+          
+          <ng-template #incomplete>
+            <input type="checkbox">
+          </ng-template>
+        </th>
+        <td>{{ todo.id }}</td>
+        <td>{{ todo.text }}</td>
         <td>
           <!-- TODO: Hide update/delete if update clicked -->
           <button type="button" class="btn btn-warning">Update</button>
