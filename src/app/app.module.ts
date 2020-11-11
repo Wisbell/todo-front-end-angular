@@ -12,6 +12,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { TodoComponent } from './pages/todo/todo.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { TodoListComponent } from './pages/todo-list/todo-list.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -24,7 +25,8 @@ export function tokenGetter() {
     LoginComponent,
     AboutComponent,
     TodoComponent,
-    SettingsComponent
+    SettingsComponent,
+    TodoListComponent
   ],
   imports: [
     BrowserModule,

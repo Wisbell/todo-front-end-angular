@@ -1,4 +1,5 @@
 // TODO: Add active link depending on route
+// TODO: Add javascript for mobile menu
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
